@@ -133,3 +133,4 @@ data/
 spacy_data/
 output/
 output/putput
+bert_output
