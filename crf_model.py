@@ -3,10 +3,12 @@ from sklearn_crfsuite import metrics
 import joblib
 import os
 
-from make_crf_features import sent2features
-
 
 class CrfModel:
+    """
+    Обертка над моделью CRF из sklearn_crfsuite, позволяющая обучать, тестировать, сохранять/загружать модель
+    и делать predict
+    """
 
     def __init__(self):
         self.crf = None
@@ -30,7 +32,7 @@ class CrfModel:
     def save_model(self, model_path):
         if not os.path.exists(model_path):
             os.makedirs(os.path.dirname(model_path))
-        joblib.dump(self.crf)
+        joblib.dump(self.crf, model_path)
 
     def train_model(self, X_train, y_train):
         self.crf.fit(X_train, y_train)
