@@ -7,9 +7,9 @@ import os
 from sklearn.model_selection import train_test_split
 from src.models.BiLSTMModel import BiLSTMCRFAtt
 from src.models.f1_score import F1Score
-from src.data.Embedding import FTEmbedding
-from src.data.NERDataloader import NERDataloader
-from src.data.data_utils import get_word_to_idx, get_tag_to_idx, df_from_csv
+from src.data_utils.Embedding import FTEmbedding
+from src.data_utils.NERDataloader import NERDataloader
+from src.data_utils.data_utils import get_word_to_idx, get_tag_to_idx, df_from_csv
 
 
 DATA_PATH = 'datasets/train.csv'
