@@ -134,3 +134,8 @@ spacy_data/
 output/
 output/putput
 bert_output
+*.bin
+*.gz
+.idea/My_NER.iml
+*.pkl
+*.pth
