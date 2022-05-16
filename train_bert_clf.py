@@ -16,8 +16,8 @@ from transformers import BertTokenizerFast
 from tqdm import tqdm
 import os
 import json
-from src.data.data_utils import get_word_to_idx, get_tag_to_idx, df_from_csv
-from src.data.BertNerDataset import BertNerDataset
+from src.data_utils.data_utils import get_word_to_idx, get_tag_to_idx, df_from_csv
+from src.data_utils.BertNerDataset import BertNerDataset
 from src.models.f1_score import F1Score
 
 # specify GPU

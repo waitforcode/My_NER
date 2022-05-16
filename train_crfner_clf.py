@@ -11,7 +11,7 @@
 import os
 
 from src.models.crf_model import CrfModel
-from src.data.data_utils import get_train_test, tuple_from_csv
+from src.data_utils.data_utils import get_train_test, tuple_from_csv
 
 
 DATA_PATH = 'datasets/train.csv'
