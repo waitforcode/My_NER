@@ -1,6 +1,7 @@
 # My_NER
 ### Описание проекта
 Примеры модулей обучения моделей для решения задачи NER. Для примера взят датасет Annotated Corpus for Named Entity Recognition с kaggle. 
+
 ####Сущности:
 - geo = Geographical Entity
 - org = Organization
@@ -10,6 +11,7 @@
 - art = Artifact
 - eve = Event
 - nat = Natural Phenomenon
+
 ####Модели:
 1. Обучение с использованием sklearn_crfsuite
 2. Обучение bidirectional LSTM с эмбеддингами токенов из fasttext
