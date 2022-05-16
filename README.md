@@ -2,7 +2,7 @@
 ### Описание проекта
 Примеры модулей обучения моделей для решения задачи NER. Для примера взят датасет Annotated Corpus for Named Entity Recognition с kaggle. 
 
-####Сущности:
+#### Сущности:
 - geo = Geographical Entity
 - org = Organization
 - per = Person
@@ -12,12 +12,12 @@
 - eve = Event
 - nat = Natural Phenomenon
 
-####Модели:
+#### Модели:
 1. Обучение с использованием sklearn_crfsuite
 2. Обучение bidirectional LSTM с эмбеддингами токенов из fasttext
 3. Обучение модели на базе предобученной bert-base-cased
 
-####Структура проекта:
+#### Структура проекта:
 ```bash
 .
 ├── train_crfner_clf.py
