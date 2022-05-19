@@ -52,7 +52,7 @@ class BertNerDataset(Dataset):
         attention_mask = attention_mask + [0] * pad_len
 
         if self.data_type != 'test':
-            labels = labels + tag_to_idx['PAD'] * pad_len
+            labels = labels + self.tag_to_idx['PAD'] * pad_len
         else:
             labels = 1
 
