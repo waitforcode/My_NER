@@ -35,7 +35,6 @@ config = {
 
 df = df_from_csv(DATA_PATH).sample(100)
 tag_to_idx = get_tag_to_idx(df['Tag'].values.tolist())
-word_to_idx = get_word_to_idx(df['Sentence'].apply(lambda x: x.split(' ')).values.tolist())
 
 
 train_df, val_df = train_test_split(df, test_size=config['test_size'], random_state=42)
@@ -61,10 +60,10 @@ val_data_loader = DataLoader(val_dataset, batch_size=config['batch_size'], shuff
 
 def train(data_loader, model, optimizer):
     train_loss = 0
-    for idx, dataset in enumerate(tqdm(data_loader, total=len(data_loader))):
-        batch_input_ids = dataset['input_ids'].to(device, dtype=torch.long)
-        batch_att_mask = dataset['attention_mask'].to(device, dtype=torch.long)
-        batch_target = dataset['target'].to(device, dtype=torch.long)
+    for idx, data in enumerate(tqdm(data_loader, total=len(data_loader))):
+        batch_input_ids = data['input_ids'].to(device, dtype=torch.long)
+        batch_att_mask = data['attention_mask'].to(device, dtype=torch.long)
+        batch_target = data['target'].to(device, dtype=torch.long)
 
         output = model(batch_input_ids,
                        token_type_ids=None,
@@ -72,7 +71,6 @@ def train(data_loader, model, optimizer):
                        labels=batch_target)
 
         step_loss = output[0]
-        prediction = output[1]
 
         step_loss.sum().backward()
         optimizer.step()
@@ -89,10 +87,10 @@ def evaluate(data_loader, model):
     true_labels = np.array([], dtype=np.int64).reshape(0, config['MAX_LEN'])
 
     with torch.no_grad():
-        for idx, dataset in enumerate(tqdm(data_loader, total=len(data_loader))):
-            batch_input_ids = dataset['input_ids'].to(device, dtype=torch.long)
-            batch_att_mask = dataset['attention_mask'].to(device, dtype=torch.long)
-            batch_target = dataset['target'].to(device, dtype=torch.long)
+        for idx, data in enumerate(tqdm(data_loader, total=len(data_loader))):
+            batch_input_ids = data['input_ids'].to(device, dtype=torch.long)
+            batch_att_mask = data['attention_mask'].to(device, dtype=torch.long)
+            batch_target = data['target'].to(device, dtype=torch.long)
 
             output = model(batch_input_ids,
                            token_type_ids=None,
